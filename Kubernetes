@@ -1,0 +1,111 @@
+# 🧑‍💻 Kubernetes – Container Orchestration
+
+## 📝 Overview
+
+**Kubernetes** (often abbreviated as **K8s**) is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications. Kubernetes manages clusters of containers, providing tools for deploying, managing, and scaling applications across clusters of machines.
+
+Kubernetes was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF).
+
+---
+
+## 🚀 Why Use Kubernetes in DevOps?
+
+- **Automated Scaling**: Kubernetes automatically scales applications based on traffic and load.
+- **High Availability**: Provides automated failover and self-healing features (e.g., restarting failed containers).
+- **Portability**: Works across public, private, or hybrid cloud environments.
+- **Microservices**: Ideal for running microservices architecture due to its service discovery and load balancing.
+- **CI/CD Integration**: Easily integrates with CI/CD tools like **Jenkins**, **GitLab CI**, **Docker**, and more.
+
+---
+
+## 🔑 Key Concepts
+
+| Concept              | Description                                          |
+|----------------------|------------------------------------------------------|
+| **Pod**              | The smallest deployable unit, which can contain one or more containers. |
+| **Node**             | A physical or virtual machine in the Kubernetes cluster that runs Pods. |
+| **Cluster**          | A set of nodes that run containerized applications.  |
+| **Deployment**       | Manages a set of replicas of a pod to ensure that the specified number of pods are always running. |
+| **Service**          | Defines a set of pods and a way to access them, typically through DNS. |
+| **Namespace**        | A virtual cluster inside a Kubernetes cluster to divide resources between different environments. |
+| **ReplicaSet**       | Ensures that a specified number of pod replicas are running. |
+| **Ingress**          | Manages external access to services, typically HTTP/HTTPS. |
+
+---
+
+## 🛠️ Kubernetes Installation
+
+You can set up a Kubernetes cluster in different environments (local, cloud, hybrid). Below are common ways to install Kubernetes:
+
+### 1. **Minikube** (Local Development)
+
+Minikube creates a local Kubernetes cluster for development purposes.
+
+```bash
+brew install minikube   # macOS
+sudo apt install minikube # Linux
+minikube start         # Start the cluster
+kubectl get nodes      # Verify the cluster is up and running
+
+
+
+Kubernetes Basics
+kubectl cluster-info – Display cluster information
+kubectl get nodes – List all nodes in the cluster
+kubectl get pods – List all pods in the current namespace
+kubectl get services – List all services
+kubectl get deployments – List all deployments
+
+
+2. Managing Pods
+kubectl run my-pod --image=nginx – Create a pod with Nginx
+kubectl delete pod my-pod – Delete a pod
+kubectl logs my-pod – View pod logs
+kubectl exec -it my-pod -- /bin/sh – Access a pod’s shell
+
+
+3. Managing Deployments
+kubectl create deployment my-deploy --image=nginx – Create a deployment
+kubectl scale deployment my-deploy --replicas=3 – Scale deployment to 3 replicas
+kubectl rollout status deployment my-deploy – Check rollout status
+kubectl rollout undo deployment my-deploy – Rollback to the previous version
+
+
+4. Managing Services
+kubectl expose deployment my-deploy --type=NodePort --port=80 – Expose
+deployment as a service
+kubectl get svc – List services
+kubectl describe svc my-service – Get service details
+
+
+5. Namespaces
+kubectl get ns – List all namespaces
+kubectl create namespace dev – Create a new namespace
+kubectl delete namespace dev – Delete a namespace
+
+
+6. ConfigMaps & Secrets
+kubectl create configmap my-config --from-literal=key=value – Create a
+ConfigMap
+kubectl get configmap – List ConfigMaps
+kubectl create secret generic my-secret --from-literal=password=12345 – Create a
+secret
+kubectl get secrets – List secrets
+
+
+7. Troubleshooting
+kubectl get events – View cluster events
+kubectl describe pod my-pod – Get detailed pod information
+kubectl logs my-pod – View logs of a specific pod
+kubectl top pod – Show resource usage of pods
+
+
+8. Helm (Package Manager for Kubernetes)
+helm repo add stable https://charts.helm.sh/stable – Add a Helm repo
+helm install my-release stable/nginx – Install a Helm chart
+helm list – List installed releases
+helm delete my-release – Uninstall a release
+
+
+
+
