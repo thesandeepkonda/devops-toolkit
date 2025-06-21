@@ -1,0 +1,212 @@
+# 🏗 Terraform – Infrastructure as Code (IaC)
+
+## 📝 Overview
+
+**Terraform** by HashiCorp is a powerful open-source tool for **Infrastructure as Code (IaC)**. It allows you to define, provision, and manage cloud infrastructure in a **declarative configuration language (HCL)**.
+
+Terraform is **cloud-agnostic**, meaning it works across AWS, Azure, GCP, Kubernetes, and many more providers.
+
+---
+
+## 🚀 Why Use Terraform in DevOps?
+
+- Automates cloud infrastructure setup and teardown.
+- Enables **version-controlled infrastructure** using Git.
+- Eliminates manual provisioning errors.
+- Makes infrastructure **repeatable and auditable**.
+- Easily integrates into CI/CD pipelines (Jenkins, GitHub Actions, GitLab CI, etc.).
+
+---
+
+## 📦 Key Features
+
+| Feature            | Description                                            |
+|--------------------|--------------------------------------------------------|
+| **IaC**            | Infrastructure managed like code                      |
+| **Plan & Apply**   | Preview before changes are made                       |
+| **State Management** | Keeps track of real infrastructure                  |
+| **Modules**        | Reusable code blocks (like functions for infrastructure) |
+| **Providers**      | Plugins for different cloud platforms and services    |
+
+---
+
+## 🛠️ Basic Workflow
+
+Terraform Installation on Ubuntu/Debian:
+1. Terraform Installation:
+Official Link: Terraform Installation
+○
+Commands:
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o
+/usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]
+https://apt.releases.hashicorp.com $(lsb
+_
+release -cs) main" | sudo tee
+/etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+2. AWS CLI Installation on Ubuntu:
+○
+Official Link: AWS CLI Installation
+Commands:
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86
+_
+"awscliv2.zip"
+64.zip"
+-o
+unzip awscliv2.zip
+sudo ./aws/install
+3. Kubectl Installation on Ubuntu:
+Commands:
+curl -LO "https://dl.k8s.io/release/$(curl -L -s
+https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+Step-by-Step Configuration Guide with AWS EC2 Instance
+1. Main Terraform Configuration: main.tf:
+Terraform Configuration Example:
+terraform {
+required
+_providers {
+aws = {
+source = "hashicorp/aws"
+version = "
+~> 4.16"
+}
+}
+required
+_
+version = ">= 1.2.0"
+}
+provider "aws" {
+region = "us-west-2"
+}
+resource "aws
+_
+instance" "app_
+server" {
+ami = "ami-08d70e59c07c61a3a"
+instance
+_
+type = "t2.micro"
+tags = {
+Name = var.instance
+name
+_
+}
+}
+2. Input Variables: variables.tf:
+Example:
+hcl
+variable "instance
+_
+name" {
+description = "Value of the Name tag for the EC2 instance"
+type = string
+default = "ExampleAppServerInstance"
+}
+3. Output Values: outputs.tf:
+Example:
+hcl
+output "instance
+_
+id" {
+description = "ID of the EC2 instance"
+value = aws
+_
+instance.app_
+server.id
+}
+output "instance
+_public
+_
+ip" {
+description = "Public IP address of the EC2 instance"
+value = aws
+_
+instance.app_
+server.public
+_
+ip
+}
+4. Running the Configuration:
+Initialize Terraform:
+terraform init
+Apply the Configuration:
+terraform apply
+●
+Confirm by typing yes when prompted.
+Inspect Output Values:
+terraform output
+Destroy the Infrastructure:
+terraform destroy
+Terraform Advanced Configuration Use Cases
+1. Provider Configuration:
+provider "aws" {
+region = "us-west-2"
+}
+2. Resource Creation:
+resource "aws
+_
+instance" "example" {
+ami = "ami-0c55b159cbfafe1f0"
+instance
+_
+type = "t2.micro"
+tags = {
+Name = "ExampleInstance"
+}
+}
+3. Variable Management:
+variable "region" {
+default = "us-west-2"
+}
+provider "aws" {
+region = var.region
+}
+4. State Management:
+Example for using remote state in S3:
+hcl
+terraform {
+backend "s3" {
+bucket = "my-tfstate-bucket"
+key = "terraform/state"
+region = "us-west-2"
+encrypt = true
+dynamodb
+table = "terraform-locks"
+_
+}
+}
+5. Modules:
+module "vpc" {
+source = "terraform-aws-modules/vpc/aws"
+name = "my-vpc"
+cidr = "10.0.0.0/16"
+azs = ["us-west-2a"
+,
+public
+_
+subnets = ["10.0.1.0/24"
+,
+private
+_
+subnets = ["10.0.3.0/24"
+,
+"us-west-2b"]
+"10.0.2.0/24"]
+"10.0.4.0/24"]
+}
+## Terraform Commands Cheat Sheet
+
+
+terraform init: Initializes the Terraform configuration.
+terraform fmt: Formats configuration files.
+terraform validate: Validates the configuration files.
+terraform plan: Previews changes to be applied.
+terraform apply: Applies the changes to reach the desired state.
+terraform destroy: Destroys the infrastructure and removes it from the
+state.
+terraform show: Displays the current state of resources.
+terraform state list: Lists resources in the current state.
+terraform taint <resource>: Marks a resource for recreation.
+terraform import <resource> <resource
+_
