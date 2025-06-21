@@ -1,0 +1,218 @@
+# 🐧 Linux
+
+## Overview
+Linux is an **open-source, Unix-like operating system** that powers the majority of cloud servers, container platforms, and CI/CD pipelines. Knowing Linux basics is essential for any DevOps engineer.
+
+## Why Linux Matters in DevOps
+- It's the OS for most servers, cloud VMs, and Docker containers.
+- Tools like Jenkins, Kubernetes, Docker, Ansible, and Terraform all typically run on Linux.
+- Shell scripting and command-line proficiency are crucial for automation and troubleshooting.
+
+
+1. System Administration & Scripting
+
+
+Linux commands
+1. File Management
+ls - List directory contents.
+cd - Change directory.
+pwd - Print working directory.
+cp - Copy files or directories.
+mv - Move or rename files or directories.
+rm - Remove files or directories.
+touch - Create a new empty file.
+mkdir - Create a new directory.
+rmdir - Remove an empty directory.
+cat - Concatenate and display file contents.
+head - Display the first few lines of a file.
+tail - Display the last few lines of a file.
+chmod - Change file permissions.
+chown - Change file ownership.
+find - Search for files in a directory hierarchy.
+locate - Find files by name.
+grep - Search text using patterns.
+diff - Compare two files line by line.
+tar - Archive files.
+zip/unzip - Compress and extract files.
+scp - Securely copy files over SSH.
+ls: List files and directories.
+ls -l # Long listing with details
+cd: Change directory.
+cd /home/swapna # Move to /home/swapna directory
+pwd: Show current directory.
+pwd
+cp: Copy files.
+cp file1.txt /tmp # Copy file1.txt to /tmp directory
+mv: Move or rename files.
+mv oldname.txt newname.txt mv file1.txt /tmp rm: Remove files or directories.
+rm file1.txt rm -rf /tmp/old
+_
+directory # Rename file
+# Move to /tmp directory
+# Remove a file
+# Remove directory and contents
+mkdir: Create directories.
+mkdir new
+_
+folder # Create a directory called new
+_
+folder
+cat: Display file contents.
+cat file.txt
+
+2. System Information and Monitoring
+top - Display running processes and system usage.
+htop - Interactive process viewer.
+ps - Display current processes.
+df - Show disk space usage.
+du - Show directory space usage.
+free - Show memory usage.
+uptime - Show system uptime.
+uname - Show system information.
+whoami - Display the current logged-in user.
+lsof - List open files and associated processes.
+vmstat - Report virtual memory statistics.
+iostat - Report I/O statistics.
+netstat - Display network connections and routing tables.
+ifconfig - Display or configure a network interface.
+ping - Check network connectivity.
+traceroute - Track the route packets take to a destination.
+●
+●
+top: View running processes.
+top
+df: Show disk usage.
+df -h # Human-readable format
+●
+free: Display memory usage.
+free -m # Show memory in MB
+●
+uptime: Check system uptime.
+uptime
+3. Package Management (Ubuntu/Debian)
+
+●
+●
+apt-get update - Update package lists.
+apt-get upgrade - Upgrade all packages.
+apt-get install - Install packages.
+apt-get remove - Remove packages.
+dpkg - Install, remove, and manage individual Debian packages.
+apt-get: Install, remove, or update packages.
+sudo apt-get update # Update package lists
+sudo apt-get install nginx # Install NGINX
+4. User and Permission Management
+●
+●
+●
+useradd - Add a new user.
+userdel - Delete a user.
+usermod - Modify a user.
+passwd - Change user password.
+groupadd - Create a new group.
+groupdel - Delete a group.
+groups - Show groups of a user.
+su - Switch user.
+sudo - Execute a command as another user, usually root.
+●
+●
+●
+useradd: Add a new user.
+sudo useradd -m newuser # Create a new user with a home directory
+chmod: Change file permissions.
+chmod 755 script.sh # Set permissions for owner and others
+chown: Change file owner.
+sudo chown newuser file.txt # Change ownership to newuser
+5. Networking
+●
+●
+curl - Transfer data from or to a server.
+wget - Download files from the internet.
+ssh - Secure shell to a remote server.
+telnet - Connect to a remote machine.
+nslookup - Query DNS records.
+dig - DNS lookup utility.
+iptables - Configure firewall rules.
+firewalld - Firewall management (CentOS/RHEL).
+hostname - Show or set the system hostname.
+ping: Check connectivity to a host.
+ping google.com
+●
+curl: Send HTTP requests.
+curl https://example.com
+●
+ifconfig: View network interfaces.
+ifconfig
+6. Process Management
+●
+●
+kill - Send a signal to a process.
+killall - Kill processes by name.
+pkill - Kill processes by pattern matching.
+bg - Move a job to the background.
+fg - Bring a job to the foreground.
+jobs - List background jobs.
+●
+●
+●
+ps: Show running processes.
+ps aux | grep nginx # List processes related to nginx
+kill: Terminate a process by PID.
+kill 1234 # Kill process with PID 1234
+pkill: Kill processes by name.
+pkill nginx # Kill all nginx processes
+7. Disk Management
+●
+●
+fdisk - Partition a disk.
+mkfs - Make a filesystem.
+mount - Mount a filesystem.
+umount - Unmount a filesystem.
+lsblk - List block devices.
+blkid - Print block device attributes.
+fdisk: Manage disk partitions.
+sudo fdisk -l # List disk partitions
+mount: Mount a filesystem.
+sudo mount /dev/sdb1 /mnt # Mount device sdb1 to /mnt
+8. Text Processing
+
+●
+●
+awk - Pattern scanning and processing.
+sed - Stream editor for modifying text.
+sort - Sort lines of text files.
+uniq - Report or omit repeated lines.
+cut - Remove sections from each line of files.
+wc - Word, line, character count.
+tr - Translate or delete characters.
+nl - Number lines of files.
+●
+●
+●
+grep: Search text.
+grep "error" /var/log/syslog awk: Process text with patterns.
+awk '{print $1}' file.txt sed: Edit text in streams.
+sed 's/old/new/g' file.txt # Search for "error" in syslog
+# Print the first column of each line
+# Replace "old" with "new"
+9. Logging and Auditing
+
+dmesg - Print or control kernel ring buffer.
+journalctl - Query the systemd journal.
+logger - Add entries to the system log.
+last - Show listing of last logged-in users.
+history - Show command history.
+tail -f - Monitor logs in real time.
+●
+●
+tail: View end of file in real time.
+tail -f /var/log/nginx/access.log journalctl: View system logs.
+sudo journalctl -u nginx # Follow NGINX access log
+# Logs for NGINX service
+10. Archiving and Backup
+●
+tar - Archive files.
+rsync - Synchronize files and directories.
+tar: Archive files.
+tar -cvf archive.tar /path/to/files tar -xvf archive.tar rsync: Sync files and directories.
+rsync -avz /source /destination # Create an archive
