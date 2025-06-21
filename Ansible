@@ -45,6 +45,8 @@ Ping all hosts:
 ansible all -m ping
 Run command on all hosts:
 ansible all -a "uptime"
+
+
 2. Inventory & Configuration
 ●
 Default inventory: /etc/ansible/hosts
@@ -64,14 +66,18 @@ _
 host=192.168.1.20 ansible
 user=root
 _
+
+
 3. Ad-Hoc Commands
 Run as a specific user:
 ansible all -m ping -u ubuntu --become
 Copy file to remote host:
 ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts"
 Install a package (example: nginx):
-ansible all -m apt -a "name=nginx state=present"
---become
+ansible all -m apt -a "name=nginx state=present" --become
+
+
+
 4. Playbook Structure
 - name: Install Nginx
 hosts: web
@@ -85,6 +91,8 @@ Run the playbook:
 ansible-playbook install
 _
 nginx.yml
+
+
 5. Variables & Facts
 Define variables in vars.yml:
 nginx
@@ -99,6 +107,9 @@ version }}
 state: present
 Display all facts:
 ansible all -m setup
+
+
+
 6. Handlers & Notifications
 - name: Restart Nginx
 hosts: web
@@ -114,6 +125,8 @@ handlers:
 service:
 name: nginx
 state: restarted
+
+
 7. Loops & Conditionals
 Loop over items:
 - name: Install multiple packages
@@ -131,17 +144,18 @@ name: nginx
 state: restarted
 when: ansible
 _
-facts['pkg_
-mgr'] == 'apt'
+facts['pkg_mgr'] == 'apt'
+
+
+
 8. Roles & Reusability
 Create a role:
 Ansible-galaxy init my_
 role
 Run a role in a playbook:
-- hosts: web
-roles:
-- my_
-role
+- hosts: webroles:- my_role
+
+
 9. Debugging & Testing
 Debug a variable:
 - debug:
@@ -155,7 +169,7 @@ ansible-playbook myplaybook.yml --syntax-check
 Run in dry mode:
 ansible-playbook myplaybook.yml --check
 
-Ansible Playbook
+**Ansible Playbook**
 1. Playbook Structure
 - name: Example Playbook
 hosts: all
