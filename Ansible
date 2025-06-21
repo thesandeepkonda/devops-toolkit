@@ -1,0 +1,166 @@
+# 🧰 Ansible – Configuration Management & Automation
+
+## 📝 Overview
+
+**Ansible** is an open-source **configuration management**, **provisioning**, and **application deployment** tool. It uses **agentless architecture** and operates over SSH, making it simple, powerful, and ideal for DevOps teams.
+
+Configurations are written in **YAML** (playbooks), which makes Ansible both **readable and maintainable**.
+
+---
+
+## 🚀 Why Use Ansible in DevOps?
+
+- Automates server setup, application deployment, and patching.
+- Manages infrastructure consistently across environments (dev/staging/prod).
+- Integrates with tools like **Jenkins**, **Docker**, **Terraform**, and **Kubernetes**.
+- Reduces manual effort and human error.
+
+---
+
+## 🔑 Key Concepts
+
+| Term         | Description |
+|--------------|-------------|
+| **Inventory** | List of target machines (hosts) |
+| **Playbook**  | YAML file describing tasks to execute |
+| **Task**      | A single action (e.g., install package) |
+| **Module**    | A reusable unit (e.g., `yum`, `copy`, `service`) |
+| **Role**      | A structured way to organize tasks, handlers, vars, etc. |
+
+---
+
+## 🛠 Installation
+### On Linux
+```bash
+sudo apt update
+sudo apt install ansible
+
+Ansible (playbooks, roles, inventory)
+1. Ansible Basics
+Check version:
+ansible --version
+Check inventory:
+ansible-inventory --list -y
+Ping all hosts:
+ansible all -m ping
+Run command on all hosts:
+ansible all -a "uptime"
+2. Inventory & Configuration
+●
+Default inventory: /etc/ansible/hosts
+Custom inventory:
+ansible -i inventory.ini all -m ping
+Define hosts in inventory.ini:
+ini
+[web]
+web1 ansible
+host=192.168.1.10 ansible
+user=ubuntu
+_
+_
+[db]
+db1 ansible
+_
+host=192.168.1.20 ansible
+user=root
+_
+3. Ad-Hoc Commands
+Run as a specific user:
+ansible all -m ping -u ubuntu --become
+Copy file to remote host:
+ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+Install a package (example: nginx):
+ansible all -m apt -a "name=nginx state=present"
+--become
+4. Playbook Structure
+- name: Install Nginx
+hosts: web
+become: yes
+tasks:
+- name: Install Nginx
+apt:
+name: nginx
+state: present
+Run the playbook:
+ansible-playbook install
+_
+nginx.yml
+5. Variables & Facts
+Define variables in vars.yml:
+nginx
+version: latest
+_
+Use variables in playbook:
+- name: Install Nginx
+apt:
+name: nginx={{ nginx
+_
+version }}
+state: present
+Display all facts:
+ansible all -m setup
+6. Handlers & Notifications
+- name: Restart Nginx
+hosts: web
+become: yes
+tasks:
+- name: Install Nginx
+apt:
+name: nginx
+state: present
+notify: Restart Nginx
+handlers:
+- name: Restart Nginx
+service:
+name: nginx
+state: restarted
+7. Loops & Conditionals
+Loop over items:
+- name: Install multiple packages
+apt:
+name: "{{ item }}"
+state: present
+loop:
+- nginx
+- curl
+- git
+Conditional execution:
+- name: Restart service only if Nginx is installed
+service:
+name: nginx
+state: restarted
+when: ansible
+_
+facts['pkg_
+mgr'] == 'apt'
+8. Roles & Reusability
+Create a role:
+Ansible-galaxy init my_
+role
+Run a role in a playbook:
+- hosts: web
+roles:
+- my_
+role
+9. Debugging & Testing
+Debug a variable:
+- debug:
+msg: "The value of nginx
+_
+version is {{ nginx
+_
+version }}"
+Check playbook syntax:
+ansible-playbook myplaybook.yml --syntax-check
+Run in dry mode:
+ansible-playbook myplaybook.yml --check
+
+Ansible Playbook
+1. Playbook Structure
+- name: Example Playbook
+hosts: all
+become: yes
+tasks:
+- name: Print a message
+debug:
+msg: "Hello, Ansible!"
