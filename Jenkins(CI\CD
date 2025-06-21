@@ -52,6 +52,8 @@ systemctl start jenkins systemctl stop jenkins systemctl restart jenkins systemc
 # Restart Jenkins service
 # Check Jenkins service status
 # View real-time logs
+
+
 2. Jenkins CLI Commands
 java -jar jenkins-cli.jar -s http://localhost:8080 list-jobs # List all jobs
 java -jar jenkins-cli.jar -s http://localhost:8080 build <job-name> # Trigger a job
@@ -82,6 +84,8 @@ URL # URL of the build
 _
 _
 NAME # Name of the node the build is running on
+
+
 4. Jenkins Pipeline (Declarative)
 groovy
 pipeline {
@@ -89,6 +93,8 @@ agent any
 environment {
 APP
 _
+
+
 ENV = 'production'
 }
 stages {
@@ -115,6 +121,9 @@ sh 'scp target/*
 }
 }
 }
+
+
+
 5. Jenkins Pipeline (Scripted)
 groovy
 node {
