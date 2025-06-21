@@ -1,0 +1,47 @@
+# 🗃 Git
+
+## Overview
+
+**Git** is a free and open-source **distributed version control system** designed to handle everything from small to very large projects with speed and efficiency. It is the foundation of modern DevOps practices, enabling **collaborative coding**, **change tracking**, and **CI/CD integration**.
+
+---
+
+## 🌟 Why Git in DevOps?
+
+- Enables **version control** and **code collaboration**.
+- Integrates with CI/CD pipelines (e.g., Jenkins, GitHub Actions).
+- Used for **Infrastructure as Code** (e.g., Terraform, Ansible playbooks).
+- Simplifies rollback and release management.
+
+---
+
+## 🔧 Core Concepts
+
+| Concept         | Description |
+|----------------|-------------|
+| **Repository**  | A project's codebase and history |
+| **Commit**      | A snapshot of code at a given time |
+| **Branch**      | A parallel version of the repo for feature development |
+| **Merge**       | Combines code from one branch to another |
+| **Pull Request**| Proposal to merge code, often reviewed in CI/CD |
+
+---
+
+## 🔑 Common Git Commands
+
+git status - Show the status of changes.
+git add - Add files to staging.
+git commit - Commit changes.
+git push - Push changes to a remote repository.
+git pull - Pull changes from a remote repository.
+git clone - Clone a repository.
+git commit -m "<message>"
+- Commit changes with a descriptive message.
+git push <remote> <branch> - Push changes to a remote repository.
+git pull <remote> <branch> - Pull changes from a remote repository.
+git clone <repository> - Clone a repository.
+git remote - Manage set of tracked repositories.
+git remote -v - Show URLs of remote repositories.
+git remote add <name> <url> - Add a new remote repository.
+git remote remove <name> - Remove a remote repository by name.
+git remote rename <old-name> <new-name> - Rename a remote repository
