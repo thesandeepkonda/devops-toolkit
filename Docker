@@ -1,0 +1,97 @@
+# 🐳 Docker – Containerization & Application Deployment
+
+## 📝 Overview
+
+**Docker** is an open-source platform designed to automate the **deployment, scaling, and management** of applications using containerization. Docker containers are lightweight, portable, and easy to deploy, making them an essential tool in **DevOps** workflows.
+
+---
+
+## 🚀 Why Use Docker in DevOps?
+
+- **Consistency**: Docker ensures that applications run the same way in development, testing, and production environments.
+- **Portability**: Containerized applications can run on any system that supports Docker (Linux, Windows, Mac, cloud platforms).
+- **Isolation**: Containers provide isolated environments, allowing developers to run multiple versions of the same service without conflicts.
+- **Microservices**: Perfect for microservices architecture, enabling independent scaling and deployment of services.
+- **CI/CD Integration**: Docker integrates seamlessly into continuous integration and continuous deployment (CI/CD) pipelines.
+
+---
+
+## 🔑 Key Concepts
+
+| Term              | Description                                             |
+|-------------------|---------------------------------------------------------|
+| **Container**     | A lightweight, standalone, executable package that includes everything needed to run a piece of software. |
+| **Image**         | A read-only template used to create containers. Images can be shared and reused. |
+| **Dockerfile**    | A text file that contains the instructions for building a Docker image. |
+| **Docker Hub**    | A cloud-based repository for sharing Docker images. |
+| **Volume**        | A persistent storage mechanism for Docker containers. |
+| **Network**       | Enables communication between Docker containers. |
+
+---
+
+## 🛠️ Installation
+
+### On Linux
+```bash
+sudo apt update
+sudo apt install docker.io
+
+
+ **Docker (build, run, volumes, networks, compose)**
+  Basic Commands
+
+docker ps – List running containers
+docker ps -a – List all containers
+docker info – Get Docker configuration
+docker version – Get Docker version
+
+
+Image Commands
+
+docker build -t <image>:<tag> .
+– Build an image from a Dockerfile
+docker login <repository> – Authenticate with a remote repository
+docker push <image>:<tag> – Push an image to a repository
+docker pull <image>:<tag> – Pull an image from a repository
+
+docker images – List locally available images
+docker create <image>:<tag> – Create a container from an image
+docker rmi <image> – Delete an image
+docker save <image> – Save an image as a tarball
+docker search <image> – Search for an image in a repository
+
+**Container Commands
+
+●
+docker inspect <container> – View container details
+docker stats <container> – Display live resource usage
+docker logs <container> – View container logs
+docker run <container> – Run a container
+docker kill <container> – Force stop a running container
+docker start <container> – Start a stopped container
+docker stop <container> – Gracefully stop a running container
+docker restart <container> – Restart a container
+docker rm <container> – Remove a container
+docker port <container> – Show port mappings
+docker pause <container> – Suspend container processes
+docker unpause <container> – Resume container processes
+
+
+**Network Commands
+●
+docker network ls – List networks
+docker network inspect <network> – View network details
+docker network create <network> – Create a network
+docker network rm <network> – Delete a network
+docker network connect <network> <container> – Connect a container to a
+network
+docker network disconnect <network> <container> – Disconnect a container
+from a network
+**Volume Commands
+●
+
+docker volume ls – List volumes
+docker volume inspect <volume> – View volume details
+docker volume create <volume> – Create a volume
+docker volume rm <volume> – Delete a volume
+
